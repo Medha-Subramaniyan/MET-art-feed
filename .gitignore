@@ -34,3 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/Users/medhasubramaniyan/Desktop/GitHub_Repos/MET-art-feed/roadmap.md
