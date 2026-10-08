@@ -1,0 +1,25 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
