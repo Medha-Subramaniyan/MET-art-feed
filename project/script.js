@@ -1,17 +1,31 @@
-getDepts();
-
 const dropdown = document.getElementById('deparments');
 const btn = document.getElementById('submit'); 
+let deptChoiceId; 
+
+
+getDepts();
+
+
+
+//need a const that stores the user's dropdown choice's corresponding deptID 
+
+
+//const deptIdChoice = dropdown.addEventListener(); ??? 
 
 btn.addEventListener('click', 
     () => getArt()); 
 
-function displayArt(artTitle, artist, date){
+
+
+function displayArt(artTitle,  artist, dept, date){
         const art_title = document.getElementById('art-title');
         art_title.textContent = `Title: ${artTitle}`
 
         const artist_name =document.getElementById('art-artist');
         artist_name.textContent = `Artist Name: ${artist}`
+
+        const art_dept =document.getElementById('art-dept');
+        art_dept.textContent = `Artist Deparment: ${dept}`
 
         const art_date = document.getElementById('art-date');
         art_date.textContent = `Date: ${date}`
@@ -24,9 +38,14 @@ async function getArt()
    try{
         const res = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/45734');
     const data = await res.json(); //necessary to extract the body (res comes with res.status, res,ok, etc )
+
+    // https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds={deptIdChoice}
+// from that store response.objectIDs in an arrat 
+//write a loop that iteratures through the object ids and displays the info for them
+
    console.log(data); 
-   const {title, artistDisplayName, objectDate} = data;
-   displayArt(title,artistDisplayName, objectDate ); 
+   const {title, artistDisplayName, department,  objectDate} = data;
+   displayArt(title,artistDisplayName, department, objectDate ); 
   
    }
    catch (error){
@@ -55,21 +74,20 @@ async function getDepts(){
                 dropdown.appendChild(option);
             }
 
+        dropdown.addEventListener('change', ()=>{
+            deptChoiceId = dropdown.value; 
+            console.log(deptChoiceId); 
+        }); 
+
+        
+    
+        
+
         } catch (error){
                 console.log('oops! no depts returned', error); 
         }
 
         
 }
-//getElementbyId('deparments')
-//need 21 value="dept2" options , 1 for each department
-// for x of 19 , value="dept{x}" = dept.displayName
 
 
-
-//create a new js object looping thru deparments and
-//  building up our own array [{departments.departmentId, departments.displayName}, ..] 
-
-//create a new html element, then assign from the array 
-
-//theres 2 key value pairs per 1 deparment
