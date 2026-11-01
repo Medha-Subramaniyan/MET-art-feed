@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <title>After Hours — The Met, after closing</title>
+    <meta name="description" content="Walk the Met's collection alone, after closing. The lights come on only for you."/>
+    <meta name="theme-color" content="#0b0a09"/>
+    <link rel="icon" href="data:,"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"/>
+    <link rel="stylesheet" href="styles.css"/>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="top">
+        <h1 class="mark">After Hours</h1>
+        <button id="rooms-toggle" class="link" aria-expanded="false" aria-controls="rooms">Rooms</button>
+    </header>
+
+    <nav id="rooms" class="rooms" aria-label="Rooms" hidden></nav>
+
+    <p id="status" class="status" role="status"></p>
+
+    <footer class="bottom">
+        <div class="now">
+            <span id="now-count" class="count"></span>
+            <span id="now-title" class="now-title"></span>
+            <a id="now-link" class="link" target="_blank" rel="noopener" hidden>At the Met</a>
+        </div>
+        <div class="controls">
+            <span id="hint" class="hint">Scroll to walk. Click a work to step closer.</span>
+            <button id="prev" class="step" aria-label="Previous">&larr;</button>
+            <button id="next" class="step" aria-label="Next">&rarr;</button>
+        </div>
+    </footer>
+
+    <!-- the wall text lives in the 3D scene, so screen readers get it from here -->
+    <div id="spoken" class="sr-only" aria-live="polite"></div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
